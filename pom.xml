@@ -66,27 +66,6 @@
 		</dependency>
 		</!-->
 
-		<!-- https://mvnrepository.com/artifact/software.amazon.awssdk/sqs -->
-		<dependency>
-			<groupId>software.amazon.awssdk</groupId>
-			<artifactId>sqs</artifactId>
-			<version>2.31.1</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/software.amazon.awssdk/aws-core -->
-		<dependency>
-			<groupId>software.amazon.awssdk</groupId>
-			<artifactId>aws-core</artifactId>
-			<version>2.31.1</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk-pinpoint</artifactId>
-			<version>1.12.164</version> <!-- Or the latest version -->
-		</dependency>
-
 		<dependency>
 			<groupId>com.twilio.sdk</groupId>
 			<artifactId>twilio</artifactId>
