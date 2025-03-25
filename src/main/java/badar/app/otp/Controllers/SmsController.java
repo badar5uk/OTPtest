@@ -26,12 +26,11 @@ public class SmsController {
     }
 
     @PostMapping("/verify-otp")
-    public String verifyOtp(@RequestParam String phoneNumber, @RequestParam String otp) {
+    public String verifyOtp(@RequestParam String otp) {
         try {
-            smsService.verifyOTP(phoneNumber, otp);
-            return "OTP is valid";
+            return smsService.verifyOTP(otp);
         } catch (Exception e) {
-            return "OTP is Invalid" + e.getMessage();
+            return "Error" + e.getMessage();
         }
     }
 }

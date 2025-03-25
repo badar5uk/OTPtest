@@ -26,13 +26,13 @@ public class SmsService {
 
     private static HashMap<String, OTPRecord> otpStorage = new HashMap<>();
 
-    private static final long OTP_TIMEOUT_IN_MILLIS = 5 * 60 * 1000;
+    private static final long OTP_TIMEOUT_IN_MILLIS = 1 * 60 * 1000;
 
     public String sendOTP(String toPhoneNumber) {
         // Initialize Twilio with Account SID and Auth Token
         Twilio.init(accountSid, authToken);
         String otp = generateOtp();
-//        String otpSid = storeOtp(toPhoneNumber, otp);
+        String otpSid = storeOtp(toPhoneNumber, otp);
         Message message = Message.creator(
                 new PhoneNumber("+".concat(toPhoneNumber)),
                 new PhoneNumber(fromPhoneNumber),
@@ -42,19 +42,20 @@ public class SmsService {
         return message.getSid();
     }
 
-    public boolean verifyOTP(String toPhoneNumber, String otp, String otpSid) {
-        OTPRecord otpRecord = otpStorage.get(otpSid);
+    public String verifyOTP(String otp) {
+
+        OTPRecord otpRecord = otpRecordRepository.findOtpRecordByOtp(otp);
 
         if (otpRecord == null) {
-            return false; // OTP not found
+            return "Invalid OTP"; // OTP not found
         }
 
         if (Instant.now().isAfter(otpRecord.getTimestamp().plusMillis(OTP_TIMEOUT_IN_MILLIS))) {
-            otpStorage.remove(otpSid);
-            return false;
+            otpRecordRepository.delete(otpRecord);
+            return "OTP Expired";
         }
 
-        return otp.equals(otpRecord.getOtp());
+        return "OTP Valid";
 
     }
 
@@ -68,18 +69,12 @@ public class SmsService {
 
     // Store OTP with timestamp
     private String storeOtp(String toPhoneNumber, String otp) {
-        String otpSid = toPhoneNumber + "-" + Instant.now().toEpochMilli();
         OTPRecord otpRecord = new OTPRecord();
         otpRecord.setOtp(otp);
         otpRecord.setTimestamp(Instant.now());
         otpRecord.setPhoneNumber(toPhoneNumber);
         otpRecordRepository.save(otpRecord);
-        return otpSid;
-    }
-
-
-    private String getOtpSid(String toPhoneNumber, String otp) {
-        return "";
+        return otpRecord.getId().toString();
     }
 
 }
