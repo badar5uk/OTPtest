@@ -34,14 +34,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
+		<!-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+				</!-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 
 		<dependency>
 			<groupId>com.mysql</groupId>
@@ -53,11 +57,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		</!-->
 
 		<!-- https://mvnrepository.com/artifact/software.amazon.awssdk/sqs -->
 		<dependency>
@@ -78,6 +85,13 @@
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-pinpoint</artifactId>
 			<version>1.12.164</version> <!-- Or the latest version -->
+		</dependency>
+
+		<dependency>
+			<groupId>com.twilio.sdk</groupId>
+			<artifactId>twilio</artifactId>
+			<version>10.7.0</version>
+			<scope>compile</scope>
 		</dependency>
 
 	</dependencies>
