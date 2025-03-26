@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.element {
+    position: fixed;
+    inset: 0px;
+    width: 12rem;
+    height: 5rem;
+    max-width: 100vw;
+    max-height: 100dvh;
+    margin: auto;
+  }

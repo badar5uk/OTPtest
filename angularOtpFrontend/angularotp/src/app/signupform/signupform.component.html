@@ -1,1 +1,82 @@
-<p>signupform works!</p>
+<div class="wrapper">
+   <div class="card-switch">
+     <label class="switch">
+       <input type="checkbox" class="toggle" (change)="toggleForm()">
+       <span class="slider"></span>
+       <span class="card-side"></span>
+       <div class="flip-card__inner">
+         <div class="flip-card__front">
+           <div class="title">Log in</div>
+           <form class="flip-card__form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+             <input
+               class="flip-card__input"
+               formControlName="email"
+               placeholder="Email"
+               type="email"
+             />
+             <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="error">
+               <small *ngIf="loginForm.get('email')?.hasError('required')">Email is required.</small>
+               <small *ngIf="loginForm.get('email')?.hasError('email')">Please enter a valid email.</small>
+             </div>
+             <input
+               class="flip-card__input"
+               formControlName="password"
+               placeholder="Password"
+               type="password"
+             />
+             <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="error">
+               <small *ngIf="loginForm.get('password')?.hasError('required')">Password is required.</small>
+               <small *ngIf="loginForm.get('password')?.hasError('minlength')">Password must be at least 6 characters.</small>
+             </div>
+             <button class="flip-card__btn" type="submit" [disabled]="loginForm.invalid">Let`s go!</button>
+           </form>
+         </div>
+         <div class="flip-card__back">
+           <div class="title">Sign up</div>
+           <form class="flip-card__form" [formGroup]="signupForm" (ngSubmit)="onSignup()">
+             <input
+               class="flip-card__input"
+               formControlName="name"
+               placeholder="Name"
+               type="text"
+             />
+             <div *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.invalid" class="error">
+               <small *ngIf="signupForm.get('name')?.hasError('required')">Name is required.</small>
+             </div>
+             <input
+               class="flip-card__input"
+               formControlName="email"
+               placeholder="Email"
+               type="email"
+             />
+             <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid" class="error">
+               <small *ngIf="signupForm.get('email')?.hasError('required')">Email is required.</small>
+               <small *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email.</small>
+             </div>
+             <input
+               class="flip-card__input"
+               formControlName="password"
+               placeholder="Password"
+               type="password"
+             />
+             <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid" class="error">
+               <small *ngIf="signupForm.get('password')?.hasError('required')">Password is required.</small>
+               <small *ngIf="signupForm.get('password')?.hasError('minlength')">Password must be at least 6 characters.</small>
+             </div>
+             <input
+               class="flip-card__input"
+               formControlName="confirmPassword"
+               placeholder="Confirm Password"
+               type="password"
+             />
+             <div *ngIf="signupForm.get('confirmPassword')?.touched && signupForm.get('confirmPassword')?.invalid" class="error">
+               <small *ngIf="signupForm.hasError('mismatch')">Passwords do not match.</small>
+             </div>
+             <button class="flip-card__btn" type="submit" [disabled]="signupForm.invalid">Confirm!</button>
+           </form>
+         </div>
+       </div>
+     </label>
+   </div>
+ </div>
+ 
