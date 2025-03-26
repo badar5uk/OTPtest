@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-signupform',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './signupform.component.html',
   styleUrl: './signupform.component.css'
 })
