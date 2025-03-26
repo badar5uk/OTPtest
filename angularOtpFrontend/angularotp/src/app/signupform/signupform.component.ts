@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { OtpComponent } from '../otp/otp.component';
+import { CommonModule } from '@angular/common';
+import { Observable, timer } from 'rxjs';
 
 @Component({
   selector: 'app-signupform',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, OtpComponent, CommonModule],
   templateUrl: './signupform.component.html',
   styleUrl: './signupform.component.css'
 })
@@ -12,6 +15,10 @@ export class SignupformComponent {
   loginForm: FormGroup;
   signupForm: FormGroup;
   isLogin: boolean = true;
+  countdown: number = 60;  // Countdown timer for 1 minute
+  countdownObservable: Observable<number> | null = null;
+  isTimerActive: boolean = false; // Flag to show if the timer is active
+  timerInterval: any; 
 
   constructor(private formbuilder: FormBuilder){
     this.loginForm = this.formbuilder.group({
@@ -19,10 +26,10 @@ export class SignupformComponent {
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
     this.signupForm = this.formbuilder.group({
-      username: [],
-      email: ['', Validators.required, Validators.email],
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmpassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required]
     }, { validator: this.passwordMatchValidator });
   }
 
@@ -55,9 +62,43 @@ export class SignupformComponent {
     if (this.signupForm.valid) {
       const formData = this.signupForm.value;
       console.log('Signup Data:', formData);
-      // Add your signup logic here
-    } else {
-      console.log('Signup Form is invalid');
+      fetch('http://localhost:8080/user/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData),
+      })
+        .then(response => response.json())
+        .then(data => {
+          localStorage.setItem(`token`, data.token);
+          if (data.status != 200) {
+            alert('Login successful');
+            window.location.href = "index.html";
+          }
+          else {
+            alert('User or password incorrect');
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          alert('An error occurred during login.');
+        });
+      }
     }
+  startCountdown() {
+    this.isTimerActive = true;
+    this.countdown = 60; // Reset to 60 seconds
+    this.countdownObservable = timer(0, 1000); // Emits every 1 second
+
+    // Start the countdown and update the time left
+    this.timerInterval = this.countdownObservable.subscribe(
+      (elapsedTime) => {
+        this.countdown = 60 - elapsedTime;
+        if (this.countdown <= 0) {
+          this.timerInterval.unsubscribe();
+        }
+      }
+    );
   }
 }

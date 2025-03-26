@@ -78,5 +78,10 @@
        </div>
      </label>
    </div>
+  </div>
+  <div *ngIf="isTimerActive" class="timer-modal">
+    <div class="timer-modal-content">
+      <p>Countdown: {{ countdown }} seconds</p>
+    </div>
  </div>
  
