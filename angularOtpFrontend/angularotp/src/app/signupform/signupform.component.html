@@ -36,12 +36,12 @@
            <form class="flip-card__form" [formGroup]="signupForm" (ngSubmit)="onSignup()">
              <input
                class="flip-card__input"
-               formControlName="name"
-               placeholder="Name"
+               formControlName="username"
+               placeholder="User Name"
                type="text"
              />
-             <div *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.invalid" class="error">
-               <small *ngIf="signupForm.get('name')?.hasError('required')">Name is required.</small>
+             <div *ngIf="signupForm.get('username')?.touched && signupForm.get('username')?.invalid" class="error">
+               <small *ngIf="signupForm.get('username')?.hasError('required')">User Name is required.</small>
              </div>
              <input
                class="flip-card__input"
