@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { OtpComponent } from '../otp/otp.component';
 import { CommonModule } from '@angular/common';
 import { Observable, timer } from 'rxjs';
 
 @Component({
   selector: 'app-signupform',
-  imports: [ReactiveFormsModule, OtpComponent, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './signupform.component.html',
   styleUrl: './signupform.component.css'
 })
