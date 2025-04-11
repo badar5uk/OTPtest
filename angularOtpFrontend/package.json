@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "country-list": "^2.3.0",
+    "libphonenumber-js": "^1.12.6"
+  }
+}

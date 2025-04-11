@@ -18,7 +18,7 @@ export class SignupformComponent {
   countdown: number = 60;  // Countdown timer for 1 minute
   countdownObservable: Observable<number> | null = null;
   isTimerActive: boolean = false; // Flag to show if the timer is active
-  timerInterval: any; 
+  timerInterval: any;
 
   constructor(private formbuilder: FormBuilder){
     this.loginForm = this.formbuilder.group({
