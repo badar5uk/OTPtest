@@ -1,1 +1,30 @@
-<p>phone-number-input works!</p>
+<!-- phone-number-input.component.html -->
+<div class="phone-input-container">
+  <!-- Country Select Dropdown -->
+  <div class="country-select-wrapper">
+    <select 
+      (ngModel)="selectedCountry"
+      (change)="onCountryChange()"
+      class="country-select"
+    >
+      <option *ngFor="let country of countriesList" 
+              [value]="country.code">
+        {{ country.name }} (+{{ getCountryCallingCode(country.code) }})
+      </option>
+    </select>
+    <span class="dropdown-arrow">▼</span>
+  </div>
+
+  <!-- Phone Number Input -->
+  <div class="phone-input-wrapper">
+    <span class="country-code-prefix">+{{ getCountryCallingCode(selectedCountry) }}</span>
+    <input
+      type="tel"
+      (ngModel)="phoneNumber"
+      (input)="onPhoneNumberChange()"
+      placeholder="Phone number"
+      class="phone-input"
+      [attr.aria-label]="'Phone number for '"
+    >
+  </div>
+</div>

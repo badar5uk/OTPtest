@@ -1,0 +1,67 @@
+/* phone-number-input.component.css */
+.phone-input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .country-select-wrapper {
+    position: relative;
+    min-width: 150px;
+    border-right: 1px solid #ccc;
+    background: #f8f8f8;
+  }
+  
+  .country-select {
+    width: 100%;
+    padding: 10px 30px 10px 10px;
+    border: none;
+    background: transparent;
+    appearance: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .dropdown-arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 10px;
+    color: #666;
+  }
+  
+  .phone-input-wrapper {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  .country-code-prefix {
+    padding: 0 8px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .phone-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    font-size: 14px;
+  }
+  
+  .phone-input:focus {
+    outline: none;
+  }
+  
+  /* Add flag display (optional) */
+  .country-flag {
+    display: inline-block;
+    margin-right: 8px;
+    width: 20px;
+  }
