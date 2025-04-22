@@ -1,3 +1,4 @@
+import { PhoneNumberInputComponent } from './../phone-number-input/phone-number-input.component';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -5,7 +6,7 @@ import { Observable, timer } from 'rxjs';
 
 @Component({
   selector: 'app-signupform',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, PhoneNumberInputComponent],
   templateUrl: './signupform.component.html',
   styleUrl: './signupform.component.css'
 })

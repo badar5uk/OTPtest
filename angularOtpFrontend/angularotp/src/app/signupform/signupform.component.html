@@ -72,6 +72,9 @@
              <div *ngIf="signupForm.get('confirmPassword')?.touched && signupForm.get('confirmPassword')?.invalid" class="error">
                <small *ngIf="signupForm.hasError('mismatch')">Passwords do not match.</small>
              </div>
+             <div>
+              <app-phone-number-input></app-phone-number-input>
+             </div>
              <button class="flip-card__btn" type="submit" [disabled]="signupForm.invalid">Confirm!</button>
            </form>
          </div>
