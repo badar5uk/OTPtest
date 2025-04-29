@@ -1,6 +1,18 @@
-<!-- phone-number-input.component.html -->
-<div class="phone-input-container">
-  <!-- Country Select Dropdown -->
+<div class="input-group">
+  <input type="text" class="form-control" aria-label="Text input with dropdown button">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div role="separator" class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+  </div>
+</div>
+  
+  
   <div class="country-select-wrapper">
     <select 
       (ngModel)="selectedCountry"
@@ -9,22 +21,11 @@
     >
       <option *ngFor="let country of countriesList" 
               [value]="country.code">
-        {{ country.name }} (+{{ getCountryCallingCode(country.code) }})
+        {{ country.name }} +{{ getCountryCallingCode(country.code) }}
       </option>
     </select>
     <span class="dropdown-arrow">▼</span>
   </div>
 
-  <!-- Phone Number Input -->
-  <div class="phone-input-wrapper">
-    <span class="country-code-prefix">+{{ getCountryCallingCode(selectedCountry) }}</span>
-    <input
-      type="tel"
-      (ngModel)="phoneNumber"
-      (input)="onPhoneNumberChange()"
-      placeholder="Phone number"
-      class="phone-input"
-      [attr.aria-label]="'Phone number for '"
-    >
-  </div>
-</div>
+  
+ 

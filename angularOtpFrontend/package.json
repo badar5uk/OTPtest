@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "bootstrap": "^5.3.5",
     "country-list": "^2.3.0",
     "intl-tel-input": "^19.5.7",
-    "libphonenumber-js": "^1.12.6"
+    "libphonenumber-js": "^1.12.6",
+    "popper.js": "^1.16.1"
   }
 }
