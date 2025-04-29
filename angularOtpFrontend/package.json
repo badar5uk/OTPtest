@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "country-list": "^2.3.0",
+    "intl-tel-input": "^19.5.7",
     "libphonenumber-js": "^1.12.6"
   }
 }
